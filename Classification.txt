@@ -1,0 +1,51 @@
+Naive Bayes 
+library(e1071)
+ library("klaR")
+independent should hold ##Naive Bayes setwd(“E:/R Orientation”)
+
+library("caret")
+library("ggplot2")
+data(iris)
+head(iris)
+unique(iris$Species)
+#Plot graph
+pairs(iris[1:4], main="Iris Data (red=setosa,green=versicolor,blue=virginica)",pch=21,
+#	training a  naive  Bayes
+
+index = sample(nrow(iris), floor(nrow(iris) * 0.7)) #70/30 split.
+train = iris[index,]test =
+iris[-index,]
+
+xTrain = train[,-5] # removing y-outcome	variable.
+
+yTrain = train$Species # only y.
+
+
+xTest = test[,-5] yTest =
+test$Species
+prop.table(table(predict(model$finalModel,xTest)$class,yTest))FALSE and adjust
+##  = 1.
+
+
+//K NEAREST
+df <- data(iris) ##load data
+
+head(iris) ## see the structure
+ran <- sample(1:nrow(iris), 0.9 *  nrow(iris)) 
+nor <-function(x) { (x -min(x))/(max(x)-min(x))}
+iris_norm <- as.data.frame(lapply(iris[,c(1,2,3,4)], nor))
+summary(iris_norm)
+iris_train <-iris_norm[ran,]
+iris_test <-iris_norm[-ran,]
+iris_target_category <- iris[ran,5]
+iris_test_category <- iris[-ran,5]
+library(class)
+
+pr  <-  knn(iris_train,iris_test,cl=iris_target_category,k=13)
+tab <- table(pr,iris_test_category)
+accuracy <- function(x){sum(diag(x)/(sum(rowSums(x)))) * 100} 
+Accuracy(tab)
+
+
+
+

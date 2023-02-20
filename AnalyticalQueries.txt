@@ -1,0 +1,87 @@
+To Create Table
+SQL> Create Table ssb1
+ (emp_no integer,
+ dep_no integer,
+ bdate date,
+ salary integer,
+ comm integer,
+ job varchar2(20));
+
+ insert into ssb1
+values(101,01,'06-jun-00',50000,3000,'Analyst')
+
+ r
+  insert into ssb1
+ values(105,01,'18-Dec-94',45000,2500,'Programmer')
+ values(102,02,'04-mar-99',30000,1500,'Manager')
+ values(103,03,'25-jan-98',25000,1000,'Clerk')
+ values(104,02,'30-Sep-95',35000,1500,'Assistant_Manger')
+ values(106,03,'09-May-01',25000,1000,'Peon')
+select * from ssb1;
+
+ SELECT dep_no,job,count(*),sum(salary) from ssb1
+ group by rollup(dep_no,job);   //(RollUP)
+
+select dep_no,job,sum(salary) from ssb1
+where dep_no in(01,02)
+group by dep_no, rollup(job);
+
+SELECT dep_no,job,count(*),sum(salary) from ssb1
+  group by job,rollup(dep_no);
+
+
+ SELECT dep_no,job,count(*),sum(salary) from ssb1
+  group by cube(dep_no,job);   //CUBE
+
+select emp_no,dep_no,salary,comm, rank() over(partition by dep_no order by salary) as 
+Rank from ssb1;            //Rank
+
+select emp_no,bdate, lead(bdate,1) over(order by bdate) as "next birthdate"from ssb1;//LEAD
+
+select emp_no,bdate,
+ 2 lead(bdate,1) over(order by bdate) as "next birthdate"
+ 3 from ssb1 where dep_no=03;
+
+select emp_no,bdate,
+ 2 lag(bdate,1) over(order by bdate) as "Previous"
+ 3 from ssb1 ;
+
+select emp_no,bdate,
+ 2 lag(bdate,1) over(order by bdate) as "Previous"
+ 3 from ssb1 where dep_no=02;
+
+select dep_no,salary,
+max(salary)keep(DENSE_RANK FIRST ORDER BY comm)
+  over(PARTITION BY dep_no)"max"
+  from ssb1;
+
+ select dep_no,salary,
+ 2 max(salary)keep(DENSE_RANK FIRST ORDER BY salary)
+ 3 over(PARTITION BY dep_no)"max"
+ 4 from ssb1;
+
+select dep_no,salary,
+ 2 max(salary)keep(DENSE_RANK FIRST ORDER BY salary desc)
+ 3 over(PARTITION BY dep_no)"max"
+ 4 from ssb1  //DESCENDING
+
+> select dep_no,salary,
+ 2 min(salary)keep(DENSE_RANK FIRST ORDER BY salary)
+ 3 over(PARTITION BY dep_no)"min"
+ 4 from ssb1;    //MIN
+
+select dep_no,salary,
+ 2 max(salary)keep(DENSE_RANK FIRST ORDER BY salary desc)
+ 3 over(PARTITION BY dep_no)"max",
+ 4 max(salary)keep(DENSE_RANK LAST ORDER BY salary desc)
+ 5 over(PARTITION BY dep_no)"min"
+ 6 from ssb1;  //Combination
+
+> select dep_no,salary,
+ 2 min(salary)keep(DENSE_RANK LAST ORDER BY salary desc)
+ 3 over(PARTITION BY dep_no)"min"
+ 4 from ssb1;     //LAST ORDER
+
+
+
+

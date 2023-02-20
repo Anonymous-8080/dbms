@@ -1,0 +1,27 @@
+SQL> CREATE TABLE invoices
+  ( invoice_id NUMBER(10),
+  invoice_name VARCHAR2(50),
+  invoice_amount NUMBER(10),
+  invoice_location VARCHAR2(50),
+  invoice_date DATE)
+  PARTITION BY LIST(invoice_location)
+  (
+  PARTITION invoice_a VALUES('Bhayander','Andheri'),
+ PARTITION invoice_b VALUES('Worli','Parel'),
+ PARTITION invoice_c VALUES('Daiser','TilakNagar'),
+ PARTITION invoice_d VALUES(DEFAULT)
+ )
+ enable row movement
+;
+Table created.
+
+ To Check if the partitions are Built Correctly
+SQL> SELECT TABLE_NAME,PARTITION_NAME FROM USER_TAB_PARTITIONS 
+WHERE TABLESPACE_NAME='USERS';
+
+ insert into invoices 
+values(1,'Diksha',15000,'Bhayander',TO_DATE('06/03/2021','DD/MM/YYYY'));
+
+select * from invoices;
+
+> SELECT * FROM invoices PARTITION(invoice_b);

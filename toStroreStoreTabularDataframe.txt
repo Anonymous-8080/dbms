@@ -1,0 +1,22 @@
+Data Frames in R: It is used to store tabular data. Can contain different classes.
+> emp_no=c(1,2,3)
+> emp_name=c('Diksha','Rani','Danish')
+> emp_sal=c(2300,7800,8900)
+> data_emp=data.frame(emp_no,emp_name,emp_sal)// using
+data.frame function
+> print(data_emp)
+// accessing the specific element using $
+> data_emp$emp_name
+
+> nrow(data_emp) // total number of data present in row
+
+> ncol(data_emp)// total number of data present in column
+
+> names(data_emp) // displaying the headings.
+
+> smoke=matrix(c(34,45,78,89,67,70,13,45,67),nrow=3,ncol=3,byrow
+=TRUE) // Creating 3x3 matrix called smoke
+> colnames(smoke)=c('High','Medium','Low') // Using colnames giving 
+the column name.
+> rownames(smoke)=c('Summer','Rainy','Winter')// Giving the row names.
+> print(smoke)

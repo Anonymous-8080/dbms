@@ -1,0 +1,34 @@
+Naming and Renaming variables, adding a new variable.
+Dealing with missing data.
+ Dealing with categorical data.
+Data reduction using subsetting
+
+
+Step 1: creating csv file (dataset .csv)
+Step 2: Importing the dataset.
+dataset <- read_csv("dataset.csv")
+View(dataset)
+print(dataset)
+
+
+
+Implementation and analysis of Classification 
+algorithms like Naive Bayesian, K- Nearest Neighbor, 
+ID3 , C4.5
+
+Naïve Bayes :
+Naive Bayes is a Supervised Non-linear classification algorithm in R 
+Programming. Naive Bayes classifiers are a family of simple probabilistic 
+classifiers based on applying Baye’s
+theorem with strong(Naive) independence assumptions between the features 
+or variables. The Naive Bayes algorithm is called “Naive” because it makes the 
+assumption that the occurrence of a certain feature is independent of the 
+occurrence of other features.
+
+Dataset: Iris dataset consists of 50 samples from each of 3 species of Iris(Iris 
+setosa, Iris virginica, Iris versicolor) and a multivariate dataset introduced by 
+British statistician and biologist Ronald Fisher in his 1936 paper The use of 
+multiple measurements in taxonomic problems. Four features were measured 
+from each sample i.e length and width of the sepals and petals and based on the 
+combination of these four features, Fisher developed a linear discriminant model 
+to distinguish the species from each other.

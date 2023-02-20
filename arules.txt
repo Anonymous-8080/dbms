@@ -1,0 +1,14 @@
+Practical 8 Implementation and analysis of Apriori Algorithm using Market Basket Analysis
+>	install.packages("arules")
+>	library(arules)
+shopping<- read.csv(file="shopping_basket.csv")
+> shopping
+>	length(shopping) 
+>	dim(shopping) 
+>	rules<- apriori(shopping) 
+
+inspect(rules)
+> rules<- apriori(shopping,parameter=list(support=0.5,conf=0.7)) 
+> inspect (rules)
+>	rules<- apriori(shopping,parameter=list(minlen=2, maxlen=5, support=0.5,conf=0.7))
+> inspect(rules)

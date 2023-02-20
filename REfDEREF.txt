@@ -1,0 +1,43 @@
+REF AND DEREF
+SQL> create or replace type Animal_ty as object
+ 2 (Breed varchar2(25),
+ 3 Name varchar2(25),
+ 4 BirthDate DATE);
+ 5 /
+
+create table ANIMAL of ANIMAL_TY;
+
+insert into ANIMAL VALUES(
+ 2 ANIMAL_TY('Cat','Kiwi','06-Jun-06'));
+insert into ANIMAL VALUES(
+ 2 ANIMAL_TY('Dog','Candy','16-Mar-03'));
+> insert into ANIMAL VALUES(
+ 2 ANIMAL_TY('Turtle','Turty','24-April-10'));
+
+select REF(A) from ANIMAL A;
+
+create table KEEPER
+ 2 (KeeperName varchar2(25),
+ 3 AnimalKept REF ANIMAL_TY);
+> describe KEEPER
+
+ insert into KEEPER
+ 2 select 'Rachael',
+ 3 REF(A)
+ 4 from ANIMAL A
+ 5 where Name='Kiwi';
+
+insert into KEEPER
+ 2 select 'Shreya',
+ 3 REF(A)
+ 4 from ANIMAL A
+ 5 where Name='Turty';
+
+ select * from KEEPER;
+
+L> set describe depth 2;
+
+> describe KEEPER
+
+L> select KeeperName,DEREF(K.AnimalKept)
+ 2 from KEEPER K;

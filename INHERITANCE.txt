@@ -1,0 +1,77 @@
+SQL> create type PERSON_TY as object
+ 2 (ssn number,
+ 3 name varchar2(25),
+ 4 gender char(1),
+ 5 static function show_super(person_obj in person_ty)return varchar2,
+ 6 member function show return varchar2)
+ 7 NOT FINAL;
+ 8 /
+
+SQL> create type TEACHER_TY UNDER PERSON_TY
+ 2 (id_of_joining DATE,
+ 3 salary number(7,2),
+ 4 courses_taught varchar2(50),
+ 5 OVERRIDING member function show return varchar2);
+ 6 /
+
+Type created.
+QL> create type STUDENT_TY UNDER PERSON_TY
+ 2 (grade char(1),
+ 3 yr_of_comp varchar2(20),
+ 4 courses_taken varchar2(50),
+ 5 OVERRIDING member function show return varchar2);
+ 6 /
+Type created.
+
+
+SQL> create type body PERSON_TY as
+ 2 --static function that can be called by subtypes
+ 3 static function show_super(person_obj in person_ty) return varchar2 is
+ 4 begin
+ 5 return 'SSN:'|| TO_CHAR(person_obj.ssn)||', Name:'||person_obj.Name||', 
+Gender:'||person_obj.gender;
+ 6 end;
+ 7 --funtion that can be overriden by subtypes
+ 8 member function show return varchar2 is
+ 9 begin
+10 return person_ty.show_super(SELF);
+11 end;
+12 end;
+13 /
+
+Type body created.
+
+SQL> create type body STUDENT_TY as
+ 2 OVERRIDING member function show return varchar2 is
+ 3 begin
+ 4 return person_ty.show_super(SELF)||'--
+Grade:'||grade||',Yr_Of_Comp:'||yr_of_comp||',Courses Taken:'|| courses_taken;
+ 5 end;
+ 6 end;
+ 7 /
+
+Type body created.
+SQL> create type body TEACHER_TY as
+ 2 OVERRIDING member function show return varchar2 is
+ 3 begin
+ 4 return person_ty.show_super(SELF)||'--
+Date_of_Joining:'||id_of_joining||',Salary:'||TO_CHAR(salary)||',Courses Taught:'|| 
+courses_taught;
+ 5 end;
+ 6 end;
+ 7 /
+Type body created.
+
+CREATE AN OBJECT TABLE
+SQL> create table person_obj_table of PERSON_TY;
+Table created.
+INSERT DATA INTO OBJECT TABLE
+SQL> insert into person_obj_table values(PERSON_TY(1,'ABC','M'));
+
+insert into person_obj_table values(TEACHER_TY(2,'XYZ','F','03 MAR 
+2011',25000,'CG,DS'));
+
+SELECT DATA FROM OBJECT TABLE
+SQL> select p.show() from person_obj_table p;
+
+P.SHOW()

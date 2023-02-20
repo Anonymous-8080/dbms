@@ -1,0 +1,34 @@
+Installing the packages and Read / 
+Write the file. 
+
+install.packages(ConnectXL)
+install.packages(readxl) 
+install.packages(writexl)
+
+To check whether the packages installed 
+properly or not. library(ConnectXL)
+library(readxl)
+library(writexl)
+
+
+How to read the file from 
+directory? Answer:
+> data_E=read.table("Example1.csv",sep=",",header=T)
+> print(data_E)
+> dim(data_E)
+> head(data_E,3)
+> tail(data_E,2)
+
+
+How to write file in 
+givendirectory? Answer:
+>z=data.frame(a=12,b=45,pi=3.14)
+>print(z)
+>write.csv(z,file="data.csv")
+
+Using ConnectXL
+Reading and writing data from Excel using XLConnect
+>data_S=XLConnect:: readWorksheetFromFile("studentexcel.xlsx",sheet=1)
+> print(data_S)
+
+

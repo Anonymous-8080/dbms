@@ -1,0 +1,33 @@
+CREATE TABLE sale_range
+ ( salesman_id NUMBER(10),
+ salesman_name VARCHAR2(50),
+ sales_amount NUMBER(10),
+  sales_date DATE)
+  PARTITION BY RANGE(sales_date)
+  (
+ PARTITION sales_jan2021 VALUES LESS 
+THAN(TO_DATE('01/02/2021','DD/MM/YYYY')),
+  PARTITION sales_feb2021 VALUES LESS 
+THAN(TO_DATE('01/03/2021','DD/MM/YYYY')),
+ PARTITION sales_mar2021 VALUES LESS 
+THAN(TO_DATE('01/04/2021','DD/MM/YYYY')),
+ PARTITION sales_apr2021 VALUES LESS 
+THAN(TO_DATE('01/05/2021','DD/MM/YYYY'))
+ )
+ ;
+
+
+ SELECT TABLE_NAME,PARTITION_NAME FROM USER_TAB_PARTITIONS 
+WHERE TABLESPACE_NAME='USERS';
+
+ insert into sale_range values(02,'Yash 
+Dikshaput',20000,TO_DATE('16/02/2021','DD/MM/YYYY'));
+
+insert into sale_range values(03,'Laxmi 
+Rai',30000,TO_DATE('13/01/2021','DD/MM/YYYY'));
+
+ SELECT * FROM sale_range;
+
+Display Data Using PARTITION
+SQL> SELECT * FROM sale_range PARTITION(sales_mar2021);
+

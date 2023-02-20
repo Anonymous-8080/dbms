@@ -1,0 +1,17 @@
+Implementation and analysis of Classification algorithms
+
+
+
+
+Decision tree
+library(party)
+print(head(readingSkills))
+input.dat <- readingSkills[c(1:105),]
+png(file = "decision_tree.png")
+
+output.tree <- ctree(nativeSpeaker ~ age + shoeSize + score,data = input.dat)
+
+#	Plot the tree.
+ plot(output.tree)
+dev.off()
+

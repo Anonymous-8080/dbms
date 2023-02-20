@@ -1,0 +1,15 @@
+ Data types, checking type of variable, printing variable and objects 
+> setwd("D:/r programming/RFiles")
+> x=1
+> print(x)
+[1] 1
+> class(x)
+[1] "numeric"
+> y = "c" 
+> print(y)
+
+[1] "c"
+> is.character(y) 
+[1] TRUE
+> is.integer(y) 
+[1] FALSE

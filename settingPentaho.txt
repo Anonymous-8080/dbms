@@ -1,0 +1,55 @@
+Create Table
+SQL> create table Empl01
+ 2 (
+ 3 emp_no numeric(5),
+ 4 fname varchar2(10),
+ 5 lname varchar2(10),
+ 6 salaray numeric(5),
+ 7 comm numeric(5)
+ 8 );
+Table created.
+
+ insert into empl01 values(101,'Diksha','Shetty',50000,1500);
+ insert into empl01 values(102,'Harshal','Shetty',40000,1500);
+> insert into empl01 values(103,'Laxmi','Shetty',45000,1500);
+> insert into empl01 values(105,'Nidhi','Shetty',30000,1500);
+insert into empl01 values(106,'Skandha','Shetty',20000,1000);
+
+Start with Pentaho
+1. In Data Integration folder->Double click on spoon(Windows Batch 
+file) 
+2. Click on cancel
+
+1. Transforming Source Table and storing to Output Table in SQL
+ Step 1:File>> New>> Transformation
+ Click on Input
+ Drag Table Input on the panel
+Double Click on Table Input and the following tab will appear.
+ Click On New
+ Select Oracle in Connection Type and enter Connection Name, Database
+ Name, User Name and Password and click on Test.
+Click on get SQL select statement
+Click on database -> table and select the table name.
+Click Yes
+Click on Preview
+Click Ok
+Preview Data
+STEP 4:
+Click on Output and drag table Output.
+STEP 5:
+Hold the mouse Pointer on table input and select and drag the Output
+connector to the Table output
+Double Click on target table
+
+STEP 6:
+Enter the Target table name and check the truncate table and Specify
+database fields Check Box
+Click On Database fields and click on Get fields.
+Click on SQL and click on Execute.
+CClick on SQL and click on Execute.
+
+Click on Debug Transformation(Spider) and Click on Quick Launch
+
+Output:
+The Green ticks on the table input and table output shows successful
+transformation

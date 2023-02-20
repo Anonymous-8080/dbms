@@ -1,0 +1,80 @@
+ Create type type_add as object
+ 2 (street varchar(20),
+ 3 city varchar(20),
+ 4 zip_code number(10));
+ 5 /
+
+Create type type_name as object
+ 2 (fname varchar(20),
+ 3 mname varchar(20),
+ 4 lname varchar(20));
+ 5 /
+
+> Create table customer1
+ 2 (c_id number(5) primary key,
+ 3 c_name type_name,
+ 4 c_add type_add,
+ 5 c_phno number(10));
+
+ insert into customer1
+ 2 values(01,type_name('Vyomesh','Ramkrishna','Shetty'), type_add('Salasar 
+nagar','Worli',104),7456321456);
+
+> insert into customer1
+ 2 values(02,type_name('Bala','Ramakant','Shinde'), type_add('Jaisel 
+park','Wadala',194),9874562132);
+
+insert into customer1
+ 2 values(03,type_name('Shruti','Suresh','Suvarna'), type_add('Navghar 
+Road','Daiser',321),9966554477);
+
+select * from customer1;
+
+desc customer1;
+
+ set describe depth 2;
+ desc customer1;
+
+select c.c_add.city from customer1 c where c_id=1;
+select c.c_name.fname from customer1 c where c_id=3;
+
+ select c.c_name.fname || ''||c.c_name.mname || ''||c.c_name.lname from customer1 c;
+
+
+
+alter type type_add
+ 2 add attribute(name type_name)cascade;
+
+create table customer2
+ 2 (cust_no Integer,
+ 3 add1 type_add);
+
+ insert into customer2
+ 2 values(101,type_add('Borivali','Mumbai',102,type_name('santosh',' Jayram ',' Mestry ')));
+
+insert into customer2
+ 2 values(102,type_add('Bhayander','Thane',122,type_name('Dikshaendra',' Vijay ',' Dalvi ')));
+
+
+ desc customer2;
+select cust_no from customer2;
+
+select cust_no,c.add1.street,c.add1.name.fname from customer2 c;
+
+
+
+create type stud_type as object
+ 2 (roll_no number(5),
+ 3 name varchar2(30))
+ 4 ;
+ 5 /
+
+create table students of stud_type;
+> insert into students values(stud_type(01,'Akshay'));
+insert into students values(stud_type(02,'Yash'));
+> insert into students values(stud_type(03,'Naveen'));
+insert into students values(stud_type(04,'Kumuda'));
+ select * from students;
+
+ select roll_no from students;
+ select s.roll_no from students s;

@@ -1,0 +1,77 @@
+ Vector, Matrix, List, Factor, Data frame, Table
+
+> # Here is vector containing three numeric values 2,5 and 9:
+> c(2,5,9)
+
+> # No of members in a vector is given by length Function 
+> length(c("aa","bb","cc","dd","ee"))
+
+> length(c("aa","bb","cc","dd"))
+
+> # Vector Operations 
+> x = c(11.3,12.5,31.2) 
+> y=c(9,1,4)
+> x*y
+
+> x+y
+
+> x-y
+
+> x/y
+
+//MATRI
+
+> # using matrix() function 
+> m = matrix(c(21,22,74,96,54,36,27,63,41),nrow=3,ncol=3) 
+> m
+
+> dim(m)
+
+> m = matrix(c(21,22,74,96,54,36,27,63,41),nrow=3,ncol=3 ,byrow = TRUE) 
+> m
+
+> # cbind(column bind) and rbind(row bind)
+> x = c(10,21,32)
+> y = c(18,12,23)
+> cbind(x,y)
+ 
+> rbind(x,y)
+ 
+> # matrix multiplication 
+> p = 3*m 
+> p
+
+> n = matrix(c(74,55,98,84,36,2,15,20,94),nrow = 3,ncol = 3)
+> q = m+n 
+> q
+
+> mdash = t(m)
+> mdash
+ 
+> #DETERMINANT
+> s = matrix(c(12,25,65,74,98,36,88,54,35),nrow=3,ncol=3,byrow = TRUE) 
+> s_det = det(s) 
+> s_det 
+
+> r_det = det(m) 
+> r_det 
+
+> # Dataframe used to store tabular data. Can contain different classes 
+> student_id = c(41,42,43)
+> student_names = c("Gaurav","Kundan","Mayuresh") 
+> position = c("First","Second","Third")
+> data = data.frame(student_id,student_names,position) 
+> data 
+
+> data$student_id 
+
+> names(data)
+
+> # Table command is used to create a 2dimensional table in R 
+> smoke = matrix(c(9,8,7,5,6,4,2,1,3),ncol=3,byrow=TRUE) 
+> colnames(smoke) = c("High","Low","Middle") 
+> rownames(smoke) = c("current","former","never") 
+> smoke = as.table(smoke) 
+> smoke
+
+

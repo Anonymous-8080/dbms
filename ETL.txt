@@ -1,0 +1,134 @@
+Transformation 2: Sequence and Sort Transformation
+Step 1: Perform the first 4 steps same as Trnasformation 1.
+Step 2: Click on Transform in the left
+Step 3: Drag Add Seq and sort rows on the Panel
+Step 4: Hold the mouse pointer on the Table Input and then drag the output
+connector to the sort rows and add seq.
+Step 5: Double click on the sort rows
+a. click on get fields
+b. Edit the fields and press ok
+For table Output Follow same steps as transformation 1
+Step 6: Click on Debug the Transformation and Click on Quick Launch.
+Successful connections(Green Ticks)
+
+ Transformation 3: Calculator
+Calculator
+Drag and drop the table input -> Double click on Table input -> New Connection.
+2) Fill up the connection details -> Test the connectivity -> OK.
+Click on Get SQL Select Statement -> Conn03-> Tables -> EMPL01-> OK -> Get Fields ->YES.
+
+Click on preview data -> afterwards close button.
+
+Drag and drop the calculator and double click on Calculator icon. Include the new 
+field name, calculation what operation need to perform, fields column name, 
+field value type. 
+
+Drag and drop the table output -> Double click on Table output -> write the 
+target table name -> Check the boxes -> Select the tab database fields -> Get 
+fields-> Click on SQL -> Execute the statement -> OK .
+
+Click on spider icon for quick launch -> Quick Launch.
+
+
+
+Transformation 4: Concat the Fields
+Drag and drop the input table -> double click on table input-> New Connection -> 
+Fill up the details for connection -> Test the connectivity -> OK.
+Click on GET SQL SELECT STATEMENT button -> Select Conn04-> tables-> empl01->OK.
+
+Drag and drop the concat fields and double click on concat fields. Write target step 
+name as Full Name.
+4) Click on get fields -> Fname and Lname are kept and others are discarded and 
+their datatype would be STRING. They are separated by ‘;’ and enclosed by ‘ ” ’. 
+Then OK.
+Drag and drop table output and double click on it. Check the boxes and 
+select the tab database fields -> Get fields -> SQL -> Execute -> ok.
+
+6) Click on spider icon for QUICK LAUNCH
+
+
+ Transformation 5: Split rows
+1) Drag and drop the table input -> double click on table input -> Fill up the connection details -
+> Test the connectivity -> OK2) Click on get sql select statement command -> Select the table target04 -> OK 
+-> Get fields -> YES.
+To preview the data, click on preview button.
+Drag and drop the split fields -> Double click on it -> Field split is Full Name into 
+first name and last name. Giving their Datatype and length of string.
+
+Drag and drop the table output -> Double click on it -> Write the target table 
+name as target5 -> check the boxes and select the database fields -> Get 
+fields .
+
+Click on quick launch icon. And the output are,
+
+
+Transformation 6: Number Range
+Drag and drop the table input -> double click on it -> fill up the details for connection-> New
+3) Click on GET Select SQL Statement -> Select the table empl01 -> OK.
+Click on preview data -> Close the log.
+5) Drag and drop the number range and double click on it. Input field as salary 
+and output field as Differentiate Sal. Making conditions on table.
+
+Drag and drop the table output ->double click on it.
+ Write the table name as target06 and check the boxes. Select the tab database fields -
+> Get fields -> SQL -> execute the statements -> Ok.
+Click on quick launch icon.
+
+Transformation 7: String Operations
+Drag and drop the table input and double click on it. New Connection -> Fill up the details -> Test the 
+connectivity -> OK
+2) Click on Get SQL select statement -> Conn7->Tables-> empl01
+Drag and drop the string operations and double click on it. Performing the 
+operations on Fname and Lname as Upper and lower Case .
+Drag and drop the table output and double click on it.
+
+Write the table name as target07Check the boxes and select the tab database fields 
+-> Click on Get fields. Execute the SQL statements -> OK.
+
+
+ Implement the merge join transformation on tables
+Step1: Drag two Data grid on panel rename 
+them with Employee and Department 
+respectively
+Step2: Insert Records into respective grids.
+Step3: Insert sort rows transformation(on 
+Empid) for both Employee and Department
+Step4: Add Merge join From Joins and 
+connect it with sort rows.
+
+Step5: Double click on Merge join and made 
+necessary settings First select First_step, then 
+Second_step, select Join type INNER, and 
+from get fields select Depno only, after that 
+quick launch the transformation.
+Step 6: Select Join Type Left Outer, 
+then Right Outer and finally Full Outer 
+join
+
+
+ Implement different data validations on table
+Step1: Drag and drop Data grid on panel.
+Step2: Double click on Data grid and create 
+product table in Meta tab and enter records 
+into it using Data tab.
+Step3: Go to Validation steps and select, 
+Drag and Drop Data validator on panel and 
+double click on it.
+
+Step5: Set values for Name of field to 
+validate=check status, and Data type =string
+Step6: Click on add to set validation, set it 65 to 
+Shifted and press Enter and click on ok.
+
+Step7: Select Dummy file from Flow to hold 
+output and connect it with Data validation, while 
+connecting select option “ Main Output of step”
+
+Step8: Select another dummy and connect it to 
+‘Validation for product’ and while selecting select 
+‘Error handling of step and in next window click 
+on copy
+
+Step 9: launch transformation by selecting one dummy file each
+
+

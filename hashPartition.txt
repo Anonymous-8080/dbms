@@ -1,0 +1,21 @@
+SQL> CREATE TABLE salesh
+ 2 ( sales_id NUMBER(10),
+ 3 sales_name VARCHAR2(50),
+ 4 sales_amount NUMBER(10),
+ 5 week_no NUMBER(10))
+ 6 PARTITION BY HASH(sales_id)
+ 7 PARTITIONS 4
+ 8 ;
+Table created.
+
+SQL> SELECT TABLE_NAME,PARTITION_NAME FROM USER_TAB_PARTITIONS 
+WHERE TABLESPACE_NAME='USERS';
+
+> insert into salesh values(01,'Luffy',40000,12);
+> insert into salesh values(02,'Nami',30000,8);
+
+select * from salesh
+ 2 ;
+
+To Display Data Based on Partition
+ select * from salesh partition(sys_p21);
